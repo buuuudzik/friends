@@ -1,6 +1,7 @@
 import React from "react";
 import "./Menu.css";
 import Hamburger from "./Hamburger/Hamburger";
+import { Link } from "react-router-dom";
 
 type MyProps = {};
 
@@ -21,12 +22,12 @@ class Menu extends React.Component<MyProps, MyState> {
     return isOpened ? (
       <div className="menu-opened">
         <Hamburger isOpened={isOpened} onToggle={this.toggle} />
-        <div className="link">
-          <a href="/">Home</a>
-        </div>
-        <div className="link">
-          <a href="/about">About us</a>
-        </div>
+        <Link className="link" to="/">
+          Home
+        </Link>
+        <Link className="link" to="/about">
+          About us
+        </Link>
       </div>
     ) : (
       <div className="menu">

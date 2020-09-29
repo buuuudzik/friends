@@ -30,6 +30,6 @@ a:active {
   margin: 10px;
 }
 
-.link:hover a {
+.link:hover {
   color: yellow;
 }
