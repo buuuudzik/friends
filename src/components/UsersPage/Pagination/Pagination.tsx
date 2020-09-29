@@ -7,19 +7,25 @@ type PaginationProps = {
   pages: number;
 };
 
-const createArray = (length: number) => new Array(length).fill(1);
+const createArray = (length: number) => {
+  const elements = [];
+  for (let i = 0; i < length; i++) elements.push({ id: i, value: i + 1 });
+  return elements;
+};
 
 const Pagination = ({ currentPage, pages }: PaginationProps) => {
+  const elements = pages > 1 ? createArray(pages) : [];
+
   return (
     <div className={"pagination"}>
-      {createArray(pages).map((_, i) => (
+      {elements.map(({ id, value }) => (
         <div
-          key={i}
+          key={id}
           className={`pagination-page${
-            currentPage === i ? " current-page" : ""
+            currentPage === id ? " current-page" : ""
           }`}
         >
-          <Link to={`/${i + 1}`}>{i + 1}</Link>
+          <Link to={`/${value}`}>{value}</Link>
         </div>
       ))}
     </div>

@@ -14,6 +14,7 @@
   border: 1px solid #458045;
   color: #464646;
   font-family: "Fira Sans", sans-serif;
+  text-shadow: 2px 2px 1px darkseagreen;
 }
 
 .search input:focus {
