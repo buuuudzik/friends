@@ -65,7 +65,7 @@ class App extends React.Component<AppProps, AppState> {
     }
 
     return (
-      <Router>
+      <Router basename="/friends">
         <Switch>
           <Route path="/about">
             <About />

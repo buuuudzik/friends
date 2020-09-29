@@ -1,5 +1,6 @@
 {
   "name": "friends",
+  "homeage": "/friends",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
