@@ -1,0 +1,21 @@
+.search {
+  height: 100%;
+  width: 50vw;
+  margin-right: 30px;
+}
+
+.search input {
+  background-color: #90ee90;
+  height: 100%;
+  width: 100%;
+  padding: 0 10px;
+  font-size: 25px;
+  border: none;
+  border: 1px solid #458045;
+  color: #464646;
+  font-family: "Fira Sans", sans-serif;
+}
+
+.search input:focus {
+  outline: none;
+}

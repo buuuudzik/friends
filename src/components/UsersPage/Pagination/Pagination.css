@@ -1,0 +1,34 @@
+.pagination {
+  background-color: #3cb371;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 70px;
+}
+
+.pagination-page {
+  border: 1px solid #458045;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin: 0 5px;
+  background-color: #90ee90;
+}
+
+.current-page {
+  font-weight: bold;
+  border: 1px solid black;
+}
+
+.pagination-page a {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+}
