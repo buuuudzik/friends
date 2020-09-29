@@ -4,7 +4,7 @@ import Menu from "./Menu/Menu";
 
 type TopBarProps = {
   title: string;
-  children: JSX.Element[] | JSX.Element | null;
+  children?: JSX.Element[] | JSX.Element;
 };
 
 const TopBar = ({ title, children }: TopBarProps) => (

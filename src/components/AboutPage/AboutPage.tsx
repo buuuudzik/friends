@@ -4,7 +4,7 @@ import TopBar from "../TopBar/TopBar";
 
 const AboutPage = () => (
   <div className="about-container">
-    <TopBar title={"About us"} children={null} />
+    <TopBar title={"About us"} />
     <div className="about">
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, iste
       dolores dolor ipsum aperiam aliquid earum accusamus doloremque laborum
