@@ -12,7 +12,8 @@ class Hamburger extends React.Component<HamburgerProps, HamburgerState> {
     isOpened: false,
   };
 
-  toggle = () => this.setState((prev) => ({ isOpened: !prev.isOpened }));
+  toggle = () =>
+    this.setState((prev: HamburgerState) => ({ isOpened: !prev.isOpened }));
 
   render() {
     const { isOpened } = this.state;

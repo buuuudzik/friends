@@ -20,3 +20,8 @@
 .search input:focus {
   outline: none;
 }
+
+.search input::placeholder {
+  color: grey;
+  box-shadow: none;
+}

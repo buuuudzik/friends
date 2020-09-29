@@ -9,14 +9,14 @@ export type User = {
   phone: string;
   website: string;
 };
-type UsersProps = { items: User[] };
+type UsersProps = { users: User[] };
 
-const Users = ({ items }: UsersProps) => (
+const Users = ({ users }: UsersProps) => (
   <div className="users">
-    {!items || items.length === 0 ? (
+    {!users || users.length === 0 ? (
       <div className="users__no-users">I don't know such person...</div>
     ) : (
-      items.map(({ id, name }) => (
+      users.map(({ id, name }) => (
         <div key={id} className="user">
           {name}
         </div>

@@ -6,15 +6,13 @@ import Search from "./Search/Search";
 import Pagination from "./Pagination/Pagination";
 
 type MyProps = {
-  pageIndex: any;
+  pageIndex: number;
+  users: User[];
 };
 
 type MyState = {
-  items: User[];
   itemsPerPage: number;
   search: string;
-  loading: boolean;
-  loadingError: boolean;
 };
 
 class UsersPage extends React.Component<MyProps, MyState> {
@@ -22,42 +20,9 @@ class UsersPage extends React.Component<MyProps, MyState> {
     super(props);
 
     this.state = {
-      items: [],
       itemsPerPage: 5,
       search: "",
-      loading: true,
-      loadingError: false,
     };
-  }
-
-  fetchTodos = () => {
-    fetch("http://dummy.restapiexample.com/api/v1/employees")
-      .then((res) => res.json())
-      .then((res) => {
-        type Item = {
-          id: number;
-          employee_name: string;
-        };
-
-        const users = res.data.map(({ id, employee_name }: Item) => ({
-          id,
-          name: employee_name,
-        }));
-
-        users.length = 17;
-
-        this.setState({
-          items: users,
-          loading: false,
-        });
-      })
-      .catch((err) => {
-        this.setState({ items: [], loading: false, loadingError: true });
-      });
-  };
-
-  componentDidMount() {
-    this.fetchTodos();
   }
 
   handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -65,9 +30,10 @@ class UsersPage extends React.Component<MyProps, MyState> {
   };
 
   getFilteredItems = () => {
-    let { search, items } = this.state;
+    let { search } = this.state;
+    let { users } = this.props;
 
-    if (search.trim() === "") return items;
+    if (search.trim() === "") return users;
 
     const specials = [
       "/",
@@ -94,11 +60,11 @@ class UsersPage extends React.Component<MyProps, MyState> {
 
     search = escapeString(search.toLowerCase());
 
-    const filterItem = (item: User) => {
-      return escapeString(item.name.toLowerCase()).match(search);
+    const filterItem = (user: User) => {
+      return escapeString(user.name.toLowerCase()).match(search);
     };
 
-    return items.filter(filterItem);
+    return users.filter(filterItem);
   };
 
   correctPageIndex = (pageIndex: number) => {
@@ -118,15 +84,7 @@ class UsersPage extends React.Component<MyProps, MyState> {
   };
 
   render() {
-    const { search, itemsPerPage, loading, loadingError } = this.state;
-
-    if (loading) {
-      return <div className="loading">Loading...</div>;
-    }
-
-    if (loadingError) {
-      return <div className="loading-error">Loading error!!!</div>;
-    }
+    const { search, itemsPerPage } = this.state;
 
     const currentPageIndex = this.correctPageIndex(this.props.pageIndex);
     const filteredItems = this.getFilteredItems();
@@ -137,7 +95,7 @@ class UsersPage extends React.Component<MyProps, MyState> {
         <TopBar title={"Friends"}>
           <Search value={search} onChange={this.handleSearchChange} />
         </TopBar>
-        <Users items={currentPageUsers} />
+        <Users users={currentPageUsers} />
         <Pagination
           currentPage={currentPageIndex - 1}
           pages={Math.ceil(filteredItems.length / itemsPerPage)}

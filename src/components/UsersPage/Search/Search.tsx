@@ -8,7 +8,7 @@ type SearchProps = {
 
 const Search = ({ value, onChange }: SearchProps) => (
   <div className="search">
-    <input value={value} onChange={onChange} />
+    <input value={value} onChange={onChange} placeholder="Search..." />
   </div>
 );
 
